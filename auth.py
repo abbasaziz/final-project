@@ -1,14 +1,16 @@
 import json
 from functools import wraps
 from urllib.request import urlopen
-
+from dotenv import load_dotenv
 from flask import request
 from jose import jwt
+from os import environ
 
-AUTH0_DOMAIN = 'dev-xmqlyfwm6yku1khd.us.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'casting'
+load_dotenv()
 
+ALGORITHMS = environ.get('ALGORITHMS')
+API_AUDIENCE = environ.get('API_AUDIENCE')
+AUTH0_DOMAIN = environ.get('AUTH0_DOMAIN')
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
