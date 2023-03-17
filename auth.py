@@ -17,15 +17,15 @@ class AuthError(Exception):
 
 
 def get_auth_token_header():
-    auth = request.headers.get('Authorization', None)
+    authorization = request.headers.get('Authorization', None)
 
-    if not auth:
+    if not authorization:
         raise AuthError({
             'code': 'authorization_header_missing',
             'description': 'Authorization header is missing.'
         }, 401)
 
-    parts = auth.split()
+    parts = authorization.split(' ')
 
     if parts[0].lower() != 'bearer':
         raise AuthError({

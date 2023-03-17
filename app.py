@@ -42,7 +42,7 @@ def create_app(test_config=None):
 
     # GET endpoint API to display movies for a visitor after login 
     @app.route('/movies', methods=['GET'])
-    @requires_auth('view:movies')
+    @requires_auth('get:movies')
     def get_movies(jwt):
         movies = Movie.query.all()
 
@@ -62,7 +62,7 @@ def create_app(test_config=None):
     # POST endpoint to define route for adding a new movie
     @app.route('/movies/new', methods=['POST'])
     # Require authentication to add a movie
-    @requires_auth('add:movies')
+    @requires_auth('post:movies')
     def add_movie(jwt):
         # Get JSON data from request
         body = request.get_json()
@@ -123,7 +123,7 @@ def create_app(test_config=None):
 
 
     @app.route('/movies/update/<int:movie_id>', methods=['PATCH'])
-    @requires_auth('update:movies')
+    @requires_auth('patch:movies')
     def update_movie(jwt, movie_id):
         # Get the movie object with the specified movie_id from the database
         movie = Movie.query.get(movie_id)
@@ -166,7 +166,7 @@ def create_app(test_config=None):
     @app.route('/actors', methods=['GET'])
 
     # Use 'requires_auth' decorator to require authentication and authorization
-    @requires_auth('view:actors')
+    @requires_auth('get:actors')
     def get_actors(jwt):
         # Retrieve all actors from the database
         actors = Actor.query.all()
@@ -190,7 +190,7 @@ def create_app(test_config=None):
 
 
     @app.route('/actors/new', methods=['POST'])
-    @requires_auth('add:actors')
+    @requires_auth('post:actors')
     def add_actor(jwt):
         # Get the JSON data from the request body
         body = request.get_json(force=True)
@@ -229,9 +229,6 @@ def create_app(test_config=None):
 
     # Decorator to handle HTTP DELETE requests to delete an actor with given actor_id
     @app.route('/actors/delete/<int:actor_id>', methods=['DELETE'])
-
-    # Authorization decorator that checks if the user has permission to delete an actor
-    # with the 'delete:actors' permission
     @requires_auth('delete:actors')
 
     # Function to handle deleting an actor with given actor_id
@@ -264,7 +261,7 @@ def create_app(test_config=None):
     @app.route('/actors/update/<int:actor_id>', methods=['PATCH'])
 
     # The requires_auth decorator checks if the user is authenticated and has the 'update:actors' permission
-    @requires_auth('update:actors')
+    @requires_auth('patch:actors')
     def update_actors(jwt, actor_id):
         # Retrieve the actor with the given ID from the database
         actor = Actor.query.get(actor_id)
