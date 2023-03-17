@@ -213,3 +213,7 @@ Sample response:
     "success": true
 }
 ```
+
+## Author
+
+Abbas Aziz [abbasaziz](https://github.com/abbasaziz)
