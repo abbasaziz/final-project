@@ -5,9 +5,9 @@ from urllib.request import urlopen
 from flask import request
 from jose import jwt
 
-AUTH0_DOMAIN = 'auth0.com'
+AUTH0_DOMAIN = 'dev-xmqlyfwm6yku1khd.us.auth0.com'
 ALGORITHMS = ['RS256']
-API_AUDIENCE = ''
+API_AUDIENCE = 'casting'
 
 
 class AuthError(Exception):
@@ -110,12 +110,12 @@ def verify_decode_jwt(token):
         except Exception:
             raise AuthError({
                 'code': 'invalid_header',
-                'description': 'Cannot parse auth header'
+                'description': 'Failed to parse the auth header'
             }, 400)
 
     raise AuthError({
         'code': 'invalid_header',
-        'description': 'RSA key not found'
+        'description': 'Could not find RSA key'
     }, 400)
 
 
@@ -130,7 +130,7 @@ def requires_auth(permission=''):
                 print(e)
                 raise AuthError({
                     'code': 'invalid_token',
-                    'description': 'Cannot verify token.'
+                    'description': 'Token is not valid.'
                 }, 401)
             check_permissions(permission, payload)
             return f(payload, *args, **kwargs)
