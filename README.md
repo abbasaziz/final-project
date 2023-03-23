@@ -123,7 +123,7 @@ Sample response:
             "gender": "male",
             "id": 4,
             "movie_id": 3,
-            "name": "Keanu Reeves"
+            "name": "Matt Damon"
         },
     ],
     "success": true
