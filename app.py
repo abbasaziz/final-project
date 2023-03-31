@@ -28,7 +28,7 @@ def create_app(test_config=None):
         return response
 
 
-#<-------------- Endpoints for APP Functionality ----------------> 
+#<-------------- API Endpoints for APP Functionality ----------------> 
 
     # Basic endpoint to check if the app is deployed properly or not 
     @app.route('/', methods=['GET'])
