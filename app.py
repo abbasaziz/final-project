@@ -35,7 +35,7 @@ def create_app(test_config=None):
     def health_check():
         return jsonify({
             'success': True,
-            'description': 'App is running.'
+            'description': 'App is running successfully.'
         })
     
 
