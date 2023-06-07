@@ -1,6 +1,6 @@
 # Casting Agency Project
 
-Final Project for Full-Stack Nano-Degree program. You can access the full project deployed at Render [here](https://final-project-service-nkei.onrender.com/).
+
 
 ##### Main Project Dependencies
 
