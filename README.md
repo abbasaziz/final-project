@@ -12,7 +12,7 @@
 ### Installation instructions
 
 - Clone the project from the [repository](https://github.com/abbasaziz/final-project) to a directory on your own machine.
-- Create a virtualenv in project directory
+- Create a virtualenv in project directory using the cli commands 
 - Type and run `pip install -r requirements.txt` to install all the dependencies
 - Inside the setup.sh file update the `DATABASE_URL` with appropriate environment variables of your system and database.
 - On Unix systems, use `export DATABASE_URL={username}:{password}@{host}:{port}/{database_name}`
